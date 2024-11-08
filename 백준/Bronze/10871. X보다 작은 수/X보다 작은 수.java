@@ -1,24 +1,22 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int N = sc.nextInt();
-        int X = sc.nextInt();
+        StringTokenizer st1 = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st1.nextToken());
+        int X = Integer.parseInt(st1.nextToken());
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int[] arr = new int[N];
-        int[] newArr = new int[N];
-        int j = 0;
         for (int i = 0; i < N; i++) {
-            arr[i] = sc.nextInt();
-            if (arr[i] < X) {
-                newArr[j] = arr[i];
-                j++;
-            }
+            int num = Integer.parseInt(st.nextToken());
+            if (num < X)
+                bw.write(num + " ");
         }
-
-        for (int i = 0; i < j; i++)
-            System.out.print(newArr[i] + " ");
+        bw.flush();
+        bw.close();
     }
 }
