@@ -4,11 +4,11 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int[] arr = new int[11];
+        int A;
         int[] count = new int[11];
         for (int i = 0; i < 10; i++) {
-            arr[i] = sc.nextInt();
-            count[i] = arr[i] % 42;
+            A = sc.nextInt();
+            count[i] = A % 42;
         }
 
         for (int j = 9; j > 0; j--) {
