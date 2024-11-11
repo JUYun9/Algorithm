@@ -1,19 +1,22 @@
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int existNum;
+        int A;
         int[] arr = new int[31];
         for (int i = 1; i < 29; i++) {
-            existNum = sc.nextInt();
-            arr[existNum] = 1;
+            A = Integer.parseInt(br.readLine());
+            arr[A] = 1;
         }
 
         for (int i = 1; i < 31; i++) {
             if (arr[i] != 1)
-                System.out.println(i);
+                bw.write(i + "\n");
         }
+        bw.flush();
+        bw.close();
     }
 }
