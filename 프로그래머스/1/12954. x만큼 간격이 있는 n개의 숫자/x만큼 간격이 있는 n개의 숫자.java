@@ -1,9 +1,9 @@
 class Solution {
-    public long[] solution(long x, int n) {
+    public long[] solution(int x, int n) {
         long[] answer = new long[n];
         
         int i = 0;
-        long plus = x;
+        int plus = x;
         while (i < n) {
             answer[i] = x;
             x += plus;
