@@ -22,11 +22,17 @@ public class Main {
 
         Arrays.sort(A);
 
-        for (int i = 0; i < M; i++)
-            binarySearch(A, B[i]);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < M; i++) {
+            if (binarySearch(A, B[i]))
+                sb.append(1 + "\n");
+            else
+                sb.append(0 + "\n");
+        }
+        System.out.println(sb);
     }
 
-    public static void binarySearch(int[] array, int num) {
+    public static boolean binarySearch(int[] array, int num) {
         int start = 0;
         int end = array.length - 1;
         while (start <= end) {
@@ -36,10 +42,9 @@ public class Main {
             else if (array[mid] > num)
                 end = mid - 1;
             else {
-                System.out.println(1);
-                return;
+                return true;
             }
         }
-        System.out.println(0);
+        return false;
     }
 }
