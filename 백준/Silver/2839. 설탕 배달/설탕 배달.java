@@ -7,7 +7,7 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
         int numOfFiveKg = N / 5;
-        while (true) {
+        while (numOfFiveKg >= 0) {
             int count = numOfFiveKg;
             int weight = N - numOfFiveKg*5;
             if (weight % 3 == 0) {
@@ -16,11 +16,9 @@ public class Main {
                 break;
             }
             numOfFiveKg--;
-            if (numOfFiveKg == -1) {
-                bw.write(String.valueOf(numOfFiveKg));
-                break;
-            }
         }
+        if (numOfFiveKg == -1)
+            bw.write(String.valueOf(numOfFiveKg));
         bw.flush();
         bw.close();
     }
