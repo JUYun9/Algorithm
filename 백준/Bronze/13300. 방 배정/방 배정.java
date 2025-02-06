@@ -21,8 +21,11 @@ public class Main {
 
         int result = 0;
         for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 2; j++)
-                result += (arr[i][j]+1) / 2;
+            for (int j = 0; j < 2; j++) {
+                result += arr[i][j] / K;
+                if (arr[i][j] % K != 0)
+                    result++;
+            }
         }
 
         bw.write(String.valueOf(result));
