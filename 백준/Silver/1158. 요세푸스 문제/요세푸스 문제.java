@@ -6,36 +6,29 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        LinkedList<Integer> list = new LinkedList<>();
-        StringBuilder sb = new StringBuilder();
-        sb.append("<");
+        Queue<Integer> q = new LinkedList<>();
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int num = Integer.parseInt(st.nextToken());
-        for (int i = 1; i <= num; i++)
-            list.add(i);
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+        for (int i = 1; i <= N; i++)
+            q.add(i);
 
-        int k = Integer.parseInt(st.nextToken());
+        StringBuilder sb = new StringBuilder();
+        sb.append("<");
+        while(!q.isEmpty()) {
+            for (int i = 1; i < K; i++)
+                q.add(q.remove());
+            sb.append(q.peek());
 
-        while (num-- > 0) {
-            int count = k;
-            while (count != 1) {
-                list.add(list.pop());
-                count--;
-            }
-
-            int element = list.remove();
-
-            sb.append(element);
-            if (num == 0)
-                sb.append(">");
-            else
+            q.remove();
+            if (!q.isEmpty())
                 sb.append(", ");
         }
 
-        bw.write(sb.toString());
+        sb.append(">");
 
-        bw.flush();
+        bw.write(sb.toString());
         bw.close();
     }
 }
