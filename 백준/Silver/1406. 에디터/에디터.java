@@ -6,23 +6,20 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        LinkedList<Character> list = new LinkedList<>();
+        LinkedList<String> list = new LinkedList<>();
 
         String str = br.readLine();
         for (char s: str.toCharArray())
-            list.add(s);
+            list.add(Character.toString(s));
 
-        ListIterator<Character> cursor = list.listIterator();
-        while (cursor.hasNext())
-            cursor.next();
+        ListIterator<String> cursor = list.listIterator(list.size());
 
         int count = Integer.parseInt(br.readLine());
         while (count-- > 0) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             String command = st.nextToken();
             if (command.equals("P")) {
-                if (st.hasMoreTokens())
-                    cursor.add(st.nextToken().charAt(0));
+                cursor.add(st.nextToken());
             }
             else if (command.equals("L")) {
                 if (cursor.hasPrevious())
@@ -40,7 +37,7 @@ public class Main {
             }
         }
 
-        for (Character s: list)
+        for (String s: list)
             bw.write(s);
 
         bw.flush();
