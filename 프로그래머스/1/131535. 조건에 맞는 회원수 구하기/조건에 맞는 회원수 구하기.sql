@@ -1,0 +1,8 @@
+-- 코드를 입력하세요
+SELECT
+    count(*)
+FROM
+    USER_INFO
+WHERE
+    SUBSTRING(JOINED, 1, 4) = '2021' AND
+    AGE >= 20 AND AGE <= 29;
