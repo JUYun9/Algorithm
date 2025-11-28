@@ -42,16 +42,9 @@ class Axis implements Comparable<Axis> {
 
     @Override
     public int compareTo(Axis other) {
-        if (this.x != other.x) {
-            if (this.x > other.x)
-                return 1;
-            else
-                return -1;
-        } else {
-            if (this.y > other.y)
-                return 1;
-            else
-                return -1;
-        }
+        if (this.x != other.x)
+            return this.x - other.x;
+        
+        return this.y - other.y;
     }
 }
