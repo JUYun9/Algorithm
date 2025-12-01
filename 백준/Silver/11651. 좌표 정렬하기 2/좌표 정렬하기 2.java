@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 // 2025-12-01
-// 15:55 ~ 14:03
+// 15:55 ~ 16:03
 
 public class Main {
 
@@ -27,9 +27,11 @@ public class Main {
 
         Collections.sort(points);
 
-        for (int i = 0; i < points.size(); i++) {
-            System.out.println(points.get(i).x + " " + points.get(i).y);
-        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < points.size(); i++)
+            sb.append(points.get(i).x).append(" ").append(points.get(i).y).append("\n");
+
+        System.out.println(sb.toString());
     }
 }
 
@@ -44,16 +46,8 @@ class Point implements Comparable<Point> {
 
     @Override
     public int compareTo(Point other) {
-        if (this.y > other.y)
-            return 1;
-        else if (this.y < other.y)
-            return -1;
-        else {
-            if (this.x > other.x)
-                return 1;
-            else if (this.x < other.x)
-                return -1;
-            return 0;
-        }
+        if (this.y != other.y)
+            return this.y - other.y;
+        return this.x - other.x;
     }
 }
