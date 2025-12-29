@@ -46,7 +46,7 @@ public class Main {
                 while (!queue.isEmpty()) {
                     int[] cur = queue.poll();
                     area++;
-                    
+
                     for (int dir = 0; dir < 4; dir++) {
                         int nx = cur[0] + dx[dir];
                         int ny = cur[1] + dy[dir];
@@ -58,7 +58,7 @@ public class Main {
 
                         queue.add(new int[]{nx, ny});
                         visited[nx][ny] = true;
-                        
+
                     }
                 }
 
