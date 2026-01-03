@@ -1,50 +1,40 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.StringTokenizer;
 
 public class Main {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int N = Integer.parseInt(br.readLine());
+        int num1 = Integer.parseInt(br.readLine());
+        HashMap<Integer, Integer> map1 = new HashMap<>();
+
         StringTokenizer st = new StringTokenizer(br.readLine());
+        while (st.hasMoreElements()) {
+            int target = Integer.parseInt(st.nextToken());
+            if (!map1.containsKey(target))
+                map1.put(target, 1);
+        }
 
-        int[] A = new int[N];
-        for (int i = 0; i < N; i++)
-            A[i] = Integer.parseInt(st.nextToken());
+        int num2 = Integer.parseInt(br.readLine());
+        int[] arr2 = new int[num2];
 
-        int M = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
-
-        int[] B = new int[M];
-        for (int i = 0; i < M; i++)
-            B[i] = Integer.parseInt(st.nextToken());
-
-        Arrays.sort(A);
+        for (int i = 0; i < num2; i++)
+            arr2[i] = Integer.parseInt(st.nextToken());
 
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < M; i++) {
-            if (binarySearch(A, B[i]))
-                sb.append(1 + "\n");
+        for (int i = 0; i < num2; i++) {
+            if (map1.containsKey(arr2[i]))
+                sb.append(1).append("\n");
             else
-                sb.append(0 + "\n");
+                sb.append(0).append("\n");
         }
-        System.out.println(sb);
-    }
 
-    public static boolean binarySearch(int[] array, int num) {
-        int start = 0;
-        int end = array.length - 1;
-        while (start <= end) {
-            int mid = (start + end) / 2;
-            if (array[mid] < num)
-                start = mid + 1;
-            else if (array[mid] > num)
-                end = mid - 1;
-            else {
-                return true;
-            }
-        }
-        return false;
+
+        System.out.println(sb.toString());
     }
 }
