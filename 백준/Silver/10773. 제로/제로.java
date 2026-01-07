@@ -1,29 +1,32 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 public class Main {
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> deque = new LinkedList<>();
 
-        int K = Integer.parseInt(br.readLine());
-        for (int i = 0; i < K; i++) {
-            int t = Integer.parseInt(br.readLine());
-            if (t != 0)
-                stack.push(t);
+        //
+        int k = Integer.parseInt(br.readLine());
+        while (k-- > 0) {
+            int num = Integer.parseInt(br.readLine());
+            if (num != 0)
+                deque.add(num);
             else
-                stack.pop();
+                deque.removeLast();
         }
 
-        int sum = 0;
-        for (int num: stack) {
-            sum += num;
-        }
+        int result = 0;
+        while (!deque.isEmpty())
+            result += deque.poll();
 
-        bw.write(String.valueOf(sum));
-        bw.flush();
-        bw.close();
+        System.out.println(result);
     }
 }
