@@ -2,11 +2,9 @@ class Solution {
     public int solution(int n) {
         int answer = 0;
         
-        for (int i = 1; i < n; i++) {
-            if (n % i == 1) {
-                answer = i;
-                return answer;
-            }
+        for (int q = 2; q < n; q++) {
+            if (n%q == 1)
+                return q;
         }
         
         return answer;
