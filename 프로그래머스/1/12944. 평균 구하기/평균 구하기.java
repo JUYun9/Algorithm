@@ -2,10 +2,11 @@ class Solution {
     public double solution(int[] arr) {
         double answer = 0;
         
-        for (int i = 0; i < arr.length; i++)
-            answer += (double) arr[i];
+        for (int num: arr)
+            answer += num;
         
         answer /= arr.length;
+        
         return answer;
     }
 }
