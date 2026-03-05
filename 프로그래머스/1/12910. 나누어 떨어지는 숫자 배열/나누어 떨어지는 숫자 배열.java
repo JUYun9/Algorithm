@@ -1,13 +1,13 @@
 import java.util.*;
+import java.io.*;
 
 class Solution {
     public int[] solution(int[] arr, int divisor) {
-        LinkedList<Integer> list = new LinkedList<>();
+        List<Integer> list = new ArrayList<>();
         
-        int count = arr.length;
-        while (count-- > 0) {
-            if (arr[count]%divisor == 0)
-                list.add(arr[count]);
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % divisor == 0)
+                list.add(arr[i]);
         }
         
         if (list.isEmpty())
@@ -16,10 +16,9 @@ class Solution {
         Collections.sort(list);
         
         int[] answer = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < answer.length; i++)
             answer[i] = list.get(i);
-        }
-            
+        
         return answer;
     }
 }
