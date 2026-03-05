@@ -1,14 +1,14 @@
 import java.util.*;
 
 public class Solution {
-    public int solution(int N) {
+    public int solution(int n) {
         int answer = 0;
 
-        while (N > 9) {
-            answer += N % 10;
-            N /= 10;
+        while (n > 0) {
+            int num = n%10;
+            answer += num;
+            n /= 10;
         }
-        answer += N;
 
         return answer;
     }
