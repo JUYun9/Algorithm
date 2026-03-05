@@ -1,18 +1,13 @@
-// 01:06
-import java.util.*;
-
 class Solution {
     public int solution(int[] numbers) {
         int answer = 0;
         
-        boolean[] exist = new boolean[10];
-        for (int i  = 0; i < numbers.length; i++) {
-            int validIndex = numbers[i];
-            exist[validIndex] = true;
-        }
+        boolean[] bool = new boolean[10];
+        for (int i = 0; i < numbers.length; i++)
+            bool[numbers[i]] = true;
         
-        for (int i = 0; i < 10; i++) {
-            if (!exist[i])
+        for (int i = 0; i < bool.length; i++) {
+            if (!bool[i])
                 answer += i;
         }
         
