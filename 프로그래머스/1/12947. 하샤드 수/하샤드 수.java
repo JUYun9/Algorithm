@@ -2,15 +2,17 @@ class Solution {
     public boolean solution(int x) {
         boolean answer = true;
         
-        String str = String.valueOf(x);
+        int y = x;
         int sum = 0;
-        for (int i = 0; i < str.length(); i++)
-            sum += str.charAt(i) - '0';
+        while (y > 0) {
+            sum += y%10;
+            y /= 10;
+        }
         
-        if (x % sum == 0)
-            return answer;
-        else
-            return !answer;
-    
+       // answer = x/sum = 0 ? true : false;
+        if (x%sum != 0)
+            answer = false;
+        
+        return answer;
     }
 }
