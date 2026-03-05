@@ -1,15 +1,12 @@
 class Solution {
     public long solution(long n) {
-        long answer = -1;
+        long answer = 0;
         
-        double rootN = Math.sqrt(n);
+        double sqrt = Math.sqrt(n);
+        if (sqrt % 1 != 0)
+            return -1;
         
-        for (long i = 1; i <= rootN; i++) {
-            if (i == rootN) {
-                answer = (i+1)*(i+1);
-                return answer;
-            }
-        }
+        answer = (long) Math.pow(sqrt+1, 2);
         
         return answer;
     }
