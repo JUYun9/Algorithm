@@ -1,18 +1,14 @@
+import java.util.*;
+
 class Solution {
-    public long[] solution(long n) {
-        long[] answer = new long[String.valueOf(n).length()];
-        
-        int k = 0;
-        while (n != 0) {
-            answer[k++] = n % 10;
+    public Queue<Long> solution(long n) {
+        Queue<Long> q = new LinkedList<>();
+        while (n > 0) {
+            long num = n%10;
+            q.add(num);
             n /= 10;
         }
         
-        return answer;
+        return q;
     }
 }
-// 12345 -> 5
-// 1234 -> 4
-// 123 -> 3
-// 12 -> 2
-// 1 -> 
