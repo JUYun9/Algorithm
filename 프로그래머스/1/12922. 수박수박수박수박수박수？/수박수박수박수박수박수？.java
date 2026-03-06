@@ -1,17 +1,17 @@
-// 16:09 ~
 class Solution {
     public String solution(int n) {
-        StringBuilder answer = new StringBuilder();
-           
-        int j = 0;
-        // String[] str = {"수", "박"};
-        String[] str = new String[] {"수", "박"};
+        String answer = "";
+        
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
-            answer.append(str[j++]);
-            if (j == 2)
-                j = 0;
+            if (i%2 == 0)
+                sb.append("수");
+            else
+                sb.append("박");
         }
-    
-        return answer.toString();
+        
+        answer = sb.toString();
+        
+        return answer;
     }
 }
