@@ -2,18 +2,12 @@ class Solution {
     public long solution(int price, int money, int count) {
         long answer = 0;
         
-        long totalPrice = 0;
-        while (count > 0) {
-            totalPrice += price * count;
-            count--;
-        }
+        long sum = 0;
+        for (int i = 1; i <= count; i++)
+            sum += price*i;
         
-        if (totalPrice > money)
-            answer = totalPrice - money;
-        
+        answer = (money > sum) ? 0 : Math.abs(money - sum);
 
         return answer;
     }
 }
-
-// 12 9 6 3
