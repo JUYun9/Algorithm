@@ -1,26 +1,31 @@
-// 12:54 ~
 import java.util.*;
-
 
 class Solution {
     public int[] solution(int[] arr) {
         
         if (arr.length == 1) {
-            return new int[]{-1};
+            arr[0] = -1;
+            return arr;
         }
         
-        int minValue = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] < minValue)
-                minValue = arr[i];
-        }
-       
-        int index = 0;
         int[] answer = new int[arr.length-1];
+        
+        int min = Integer.MAX_VALUE;
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] != minValue)
-                answer[index++] = arr[i];
+            if (arr[i] < min)
+                min = arr[i];
         }
+        
+        List<Integer> list = new ArrayList<>();
+        for (int num: arr) {
+            if (num == min)
+                continue;
+            list.add(num);
+        }
+        
+        for (int i = 0; i < answer.length; i++)
+            answer[i] = list.get(i);
+        
         
         return answer;
     }
