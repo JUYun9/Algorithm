@@ -6,7 +6,7 @@ class Solution {
             return false;
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
-            if (Character.isAlphabetic(ch))
+            if (ch - '0' > 10)
                 return false;
         }
         
