@@ -3,18 +3,19 @@ import java.util.*;
 public class Solution {
     public int[] solution(int []arr) {
         
-        Deque<Integer> queue = new LinkedList<>();
+        List<Integer> list = new ArrayList<>();
+        
+        int prev = -1;
         for (int i = 0; i < arr.length; i++) {
-            if (queue.isEmpty() || queue.peekLast() != arr[i])
-                // queue.push(arr[i]);
-                queue.addLast(arr[i]);
+            if (prev != arr[i])
+                list.add(arr[i]);
+            prev = arr[i];
         }
         
-        int k = 0;
-        int[] answer = new int[queue.size()];
-        while (!queue.isEmpty())
-            answer[k++] = queue.pollFirst();
-        
+        int[] answer = new int[list.size()];
+        for (int i = 0; i < list.size(); i++)
+            answer[i] = list.get(i);
+
         return answer;
     }
 }
