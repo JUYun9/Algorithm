@@ -1,22 +1,24 @@
 class Solution {
     public String solution(String s) {
-        StringBuilder sb = new StringBuilder();
-        int index = 0;
+        String answer = "";
         
-        for (char c: s.toCharArray()) {
-            if (c == ' ') {
-                index = 0;
+        StringBuilder sb = new StringBuilder();
+        
+        int index = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == ' ') {
                 sb.append(" ");
-            } else {
-                if (index%2 == 1)
-                    sb.append(Character.toLowerCase(c));
-               else
-                   sb.append(Character.toUpperCase(c));
-            index++;
+                index = 0;
+            }
+            else {
+                sb.append(index%2==0 ? Character.toUpperCase(ch) : Character.toLowerCase(ch));
+                index++;
             }
         }
         
+        answer = sb.toString();
         
-        return sb.toString();
+        return answer;
     }
 }
