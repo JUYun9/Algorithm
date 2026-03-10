@@ -1,25 +1,14 @@
-import java.util.*;
-
 class Solution {
     public int solution(String t, String p) {
         int answer = 0;
         
-        LinkedList<String> list = new LinkedList<>();
-        
-        int idx = 0;
-        while (idx <= t.length()-p.length()) {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < p.length(); i++)
-                sb.append(t.charAt(idx + i));
-            
-            idx++;
-            list.add(sb.toString());
-        }
-        
-        for (String s: list) {
-            if (Long.parseLong(s) <= Long.parseLong(p))
+        int size = p.length();
+        for (int i = 0; i < t.length()-size+1; i++) {
+            String str = t.substring(i, i+size);
+            if (Long.parseLong(str) <= Long.parseLong(p))
                 answer++;
         }
+        
         return answer;
     }
 }
