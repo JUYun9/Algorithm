@@ -3,29 +3,29 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] numbers) {
         
-        List<Integer> answer = new LinkedList<>();
+        boolean[] bool = new boolean[200];
         
+        List<Integer> list = new ArrayList<>();
         for (int i = 0; i < numbers.length-1; i++) {
             for (int j = i+1; j < numbers.length; j++) {
-                int num = numbers[i] + numbers[j];
-                answer.add(num);
+                int sum = numbers[i] + numbers[j];
+                if (bool[sum])
+                    continue;
+                
+                list.add(sum);
+                
+                bool[sum] = true;
             }
         }
         
-        Collections.sort(answer);
-        for (int i = 0; i < answer.size()-1; i++) {
-            if (answer.get(i).equals(answer.get(i+1))) {
-                answer.remove(i);
-                i--;
-            }
-        }
+        int[] answer = new int[list.size()];
         
-        int[] result = new int[answer.size()];
-        for (int i = 0; i < answer.size(); i++) {
-            result[i] = answer.get(i);
-        }
+        int i = 0;
+        for (int num: list)
+            answer[i++] = num;
         
+        Arrays.sort(answer);
         
-        return result;
+        return answer;
     }
 }
