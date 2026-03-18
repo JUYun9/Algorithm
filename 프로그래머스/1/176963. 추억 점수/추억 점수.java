@@ -4,15 +4,13 @@ class Solution {
         
         for (int i = 0; i < photo.length; i++) {
             for (int j = 0; j < photo[i].length; j++) {
+                String target = photo[i][j];
                 for (int k = 0; k < name.length; k++) {
-                    if (photo[i][j].equals(name[k])) {
+                    if (target.equals(name[k]))
                         answer[i] += yearning[k];
-                        break;
-                    }
                 }
             }
         }
-        
         
         return answer;
     }
