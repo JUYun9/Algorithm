@@ -1,39 +1,30 @@
-import java.util.*;
-
 class Solution {
     public String[] solution(int n, int[] arr1, int[] arr2) {
-        String[] answer = new String[n];
+        String[] answer = new String[arr1.length];
         
+        String[] binary1 = new String[arr1.length];
+        String[] binary2 = new String[arr2.length];
         for (int i = 0; i < arr1.length; i++) {
+            binary1[i] = Integer.toBinaryString(arr1[i]);
+            binary2[i] = Integer.toBinaryString(arr2[i]);
             
-            Stack<Integer> stk = new Stack<>();
+            while (binary1[i].length() < n)
+                binary1[i] = "0" + binary1[i];
             
-            int count = 0;
-            while (count < n) {
-                int num1 = arr1[i] % 2;
-                int num2 = arr2[i] % 2;
-                if (num1==0 && num2==1)
-                    stk.add(num2);
+            while (binary2[i].length() < n)
+                binary2[i] = "0" + binary2[i];
+        }
+        
+        for (int i = 0; i < binary1.length; i++) {
+            answer[i] = "";
+            for (int j = 0; j < binary1[i].length(); j++) {
+                char ch1 = binary1[i].charAt(j);
+                char ch2 = binary2[i].charAt(j);
+                if (ch1 == '0' && ch2 == '0')
+                    answer[i] += " ";
                 else
-                    stk.add(num1);
-                
-                arr1[i] /= 2;
-                arr2[i] /= 2;
-                
-                count++;
+                    answer[i] += "#";
             }
-            
-            StringBuilder sb = new StringBuilder();
-            while (!stk.isEmpty()) {    
-                int k = stk.pop();
-                
-                if (k == 1)
-                    sb.append("#");
-                else
-                    sb.append(" ");
-            }
-            
-            answer[i] = sb.toString();
         }
         
         return answer;
