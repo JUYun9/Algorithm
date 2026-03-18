@@ -2,26 +2,19 @@ class Solution {
     public String solution(String[] cards1, String[] cards2, String[] goal) {
         String answer = "";
         
-        int cards1Idx = 0;
-        int cards2Idx = 0;
-        
+        int start1 = 0;
+        int start2 = 0;
         for (int i = 0; i < goal.length; i++) {
-            if (cards1Idx < cards1.length && goal[i].equals(cards1[cards1Idx])) {
-                cards1Idx++;
-                continue;
-            }
-            
-            if (cards2Idx < cards2.length && goal[i].equals(cards2[cards2Idx])) {
-                cards2Idx++;
-                continue;
-            }
-            answer = "No";
-            return answer;
+            String target = goal[i];
+            if (start1 < cards1.length && target.equals(cards1[start1])) {
+                start1++;
+            } else if (start2 < cards2.length && target.equals(cards2[start2])) {
+                start2++;
+            } else
+                return "No";
+
         }
         
-        answer = "Yes";
-        return answer;
+        return "Yes";
     }
 }
-
-
