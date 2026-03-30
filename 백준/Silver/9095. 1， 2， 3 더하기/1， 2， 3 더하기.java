@@ -4,25 +4,20 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-    private static int[] dp;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        dp = new int[11];
-
-        dp[1] = 1;
-        dp[2] = 2;
-        dp[3] = 4;
-
-        for (int i = 4; i < dp.length; i++) {
-            dp[i] = dp[i-1] + dp[i-2] + dp[i-3];
-        }
-
-        int testCase = Integer.parseInt(br.readLine());
-        for (int i = 0; i < testCase; i++) {
+        int T = Integer.parseInt(br.readLine());
+        int[] arr = new int[11];
+        while (T-- > 0) {
             int num = Integer.parseInt(br.readLine());
-            System.out.println(dp[num]);
+
+            arr[1] = 1; arr[2] = 2; arr[3] = 4;
+            for (int i = 4; i <= num; i++) {
+                arr[i] = arr[i-1] + arr[i-2] + arr[i-3];
+            }
+
+            System.out.println(arr[num]);
         }
     }
 }
