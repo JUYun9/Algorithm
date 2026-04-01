@@ -4,37 +4,31 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-    private static int[][] dp;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int num = Integer.parseInt(br.readLine());
-        int[] s = new int[num+1];
+        int[] score = new int[num+1];
 
         for (int i = 1; i <= num; i++)
-            s[i] = Integer.parseInt(br.readLine());
+            score[i] = Integer.parseInt(br.readLine());
 
         if (num == 1) {
-            System.out.println(s[1]);
+            System.out.println(score[1]);
+            return;
+        }
+        if (num == 2) {
+            System.out.println(score[1] + score[2]);
             return;
         }
 
-        dp = new int[num+1][3];
-
-        // 초기값 계산
-        dp[1][1] = s[1];
-        dp[1][2] = 0;
-        dp[2][1] = s[2];
-        dp[2][2] = s[1] + s[2];
-
-
+        int[] dp = new int[num+1];
+        dp[1] = score[1]; dp[2] = score[1] +score[2];
         for (int i = 3; i <= num; i++) {
-            dp[i][1] = Math.max(dp[i-2][1], dp[i-2][2]) + s[i];
-            dp[i][2] = dp[i-1][1] + s[i];
+            dp[i] = Math.max(dp[i-2], dp[i-3] + score[i-1]) + score[i];
+//            System.out.println(dp[i]);
         }
 
-        int ans = Math.max(dp[num][1], dp[num][2]);
-        System.out.println(ans);
+        System.out.println(dp[num]);
     }
 }
