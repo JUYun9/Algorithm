@@ -24,6 +24,7 @@ class Solution {
             else
                 resultB += Q + (W-R)*S;
             
+            
             int result = Math.min(resultA, resultB);
             
             System.out.println("#" + i + " " + result);
