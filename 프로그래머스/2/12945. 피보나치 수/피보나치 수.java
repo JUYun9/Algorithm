@@ -1,35 +1,14 @@
 class Solution {
-    
-    private static int[] arr;
-    
-    public int solution(int n) {
-        int answer = 0;
+    public int solution(int n) {     
+        int[] arr = new int[n+1];
         
-        arr = new int[100001];
-        
-        answer = fibonacci(n);
-        
-        return answer;
-    }
-    
-    private int fibonacci(int num) {
-        if (num <= 0)
-            return 0;
-        else if (num == 1) {
-            arr[num] = 1;
-            return arr[num];
+        arr[2] = 1; arr[3] = 2;
+        for (int i = 4; i <= n; i++) {
+            arr[i] = arr[i-2] + arr[i-1];
+            if (arr[i] > 1234567)
+                arr[i] %= 1234567;
         }
-        else if (arr[num] > 0)
-            return arr[num];
-        else {
-            arr[num] = (fibonacci(num-1) + fibonacci(num-2)) % 1234567;
-            return arr[num];
-        }
+        
+        return arr[n];
     }
-    
-    
 }
-
-
-
-// 27분 ~
