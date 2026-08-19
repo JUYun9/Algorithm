@@ -14,7 +14,7 @@ class Solution {
         
         ans.add("ICN");
         
-        boolean b = dfs("ICN", tickets);
+        dfs("ICN", tickets);
         
         String[] answer = new String[ans.size()]; 
         for (int i = 0; i < answer.length; i++)
